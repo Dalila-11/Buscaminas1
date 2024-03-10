@@ -70,7 +70,15 @@ class Buscaminas(TableroBuscaminas):
         super().__init__(filas, columnas, minas)
         self.jugando = True
 
+    #mejora Tloht_homo  
+    def mostrar_titulo(self):
+        print('---------------------------------')
+        print('¡Bienvenido al Juego de Buscaminas!')
+        print('---------------------------------\n')
+
     def jugar(self):
+        self.mostrar_titulo()
+    # fin mejora Tloht_ uwu
         while self.jugando:
             self.imprimir_tablero()
             fila = int(input('Ingresa la fila (0 a {}): '.format(self.filas - 1)))
