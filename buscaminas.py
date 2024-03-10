@@ -1,9 +1,9 @@
 import random
 
 # Constantes para los estados de las celdas
-MINA = '*'
-CASILLA_CERRADA = '-'
-CASILLA_ABIERTA = ' '
+MINA = '💣'
+CASILLA_CERRADA = '■'
+CASILLA_ABIERTA = '□'
 
 # Clase para el tablero de Buscaminas
 class TableroBuscaminas:
@@ -55,16 +55,13 @@ class TableroBuscaminas:
             return True  # Ya abierta
         else:
             minas_cercanas = self.contar_minas_alrededor(fila, columna)
-            self.tablero[fila][columna] = CASILLA_ABIERTA if minas_cercanas == 0 else str(minas_cercanas)
-
             if minas_cercanas == 0:
-                # Expandir en las direcciones si no hay minas cercanas
-                for i in range(-1, 2):
-                    for j in range(-1, 2):
-                        nueva_fila, nueva_columna = fila + i, columna + j
-                        if 0 <= nueva_fila < self.filas and 0 <= nueva_columna < self.columnas:
-                            self.abrir_celda(nueva_fila, nueva_columna)
-
+                self.tablero[fila][columna] = CASILLA_ABIERTA
+            else:
+                symbol = f' {minas_cercanas}'[-2:]
+                color = '\033[92m'
+                reset_color = '\033[0m'
+                self.tablero[fila][columna] = color + symbol + reset_color
             return True
 
 # Clase heredada para agregar funcionalidades específicas de Buscaminas
