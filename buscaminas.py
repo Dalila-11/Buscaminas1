@@ -97,6 +97,16 @@ class Buscaminas(TableroBuscaminas):
                 self.imprimir_tablero(mostrar_minas=True)
                 print('¡Ganaste! Has abierto todas las celdas sin encontrar minas.')
                 self.jugando = False
+                
+         reiniciar = input('¿Quieres reiniciar el juego? (si/no): ')
+        if reiniciar.lower() == 'si':
+            self.__init__(self.filas, self.columnas, self.minas)
+            self.jugando = True
+            self.jugar()
+        elif reiniciar.lower() == 'no':
+            print('¡Gracias por jugar! Hasta luego.')
+        else:
+            print('Respuesta no válida. Saliendo del juego.')
 
 
     # Método de representación de cadena
