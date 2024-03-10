@@ -1,5 +1,5 @@
 import random
-
+import os
 # Constantes para los estados de las celdas
 MINA = '💣'
 CASILLA_CERRADA = '■'
@@ -40,6 +40,7 @@ class TableroBuscaminas:
             print()
 
     def contar_minas_alrededor(self, fila, columna):
+        os.system("cls")
         minas_cercanas = 0
         for i in range(-1, 2):
             for j in range(-1, 2):
@@ -70,8 +71,9 @@ class Buscaminas(TableroBuscaminas):
         super().__init__(filas, columnas, minas)
         self.jugando = True
 
-    #mejora Tloht_homo  
+     #mejora Tloht_homo  
     def mostrar_titulo(self):
+        os.system("cls")
         print('---------------------------------')
         print('¡Bienvenido al Juego de Buscaminas!')
         print('---------------------------------\n')
@@ -98,7 +100,7 @@ class Buscaminas(TableroBuscaminas):
                 print('¡Ganaste! Has abierto todas las celdas sin encontrar minas.')
                 self.jugando = False
                 
-         reiniciar = input('¿Quieres reiniciar el juego? (si/no): ')
+        reiniciar = input('¿Quieres reiniciar el juego? (si/no): ')
         if reiniciar.lower() == 'si':
             self.__init__(self.filas, self.columnas, self.minas)
             self.jugando = True
